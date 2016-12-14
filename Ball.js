@@ -20,6 +20,7 @@ function Ball(p, v){
 	this.acceleration = function(){
 		this.acc = p5.Vector.div(this.force, this.mass);
 		this.vel.add(this.acc);
+		this.force = createVector(0,0);
 	}
 
 	this.bordercollision = function(){
@@ -46,6 +47,6 @@ function Ball(p, v){
 	}
 
 	this.addForce = function(v){
-		this.force = v;
+		this.force.add(v);
 	}
 }

@@ -60,7 +60,8 @@ function draw() {
 		balls[i].show();
 		balls[i].move();
 		balls[i].bordercollision();
-		balls[i].addForce(forces.gravity(gravity, balls[i].mass))
+		balls[i].addForce(forces.gravity(gravity, balls[i].mass));
+		balls[i].addForce(forces.drag(balls[i].vel, 1, airDrag));
 		balls[i].acceleration();
 		kineticSum += (balls[i].mass * balls[i].vel.magSq())/2;
 
