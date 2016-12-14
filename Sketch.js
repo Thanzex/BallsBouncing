@@ -1,5 +1,5 @@
 var balls = [];
-var n = 10
+var n = 80
 var acceleration;
 var slider;
 var slider1;
@@ -11,18 +11,25 @@ var gravity;
 var forces;
 var gravity;
 var kineticSum = 0;
-var ELASTICITY = 1
+var ELASTICITY = .9
 
 
 
 function setup() {
 	createCanvas(800, 800);
-	slider = createSlider(-1, 1, 0, 0.1);		//Acceleration
+	slider = createSlider(-1, 1, 0.1, 0.1);		//Gravity
+	slider.position(20, height+40);
 	slider1 = createSlider(0, 1000, n);			//Number
+	slider1.position(160, height+40);
 	slider2 = createSlider(2,50,20);			//Size
+	slider2.position(300, height+40);
 	slider3 = createSlider(0, 1, 0.1, 0.1);		//Damp
-	slider4 = createSlider(0, 1, 1, 0.01);		//ELASTICITY
+	slider3.position(440, height+40);
+	slider4 = createSlider(0, 1, ELASTICITY, 0.01);		//ELASTICITY
+	slider4.position(580, height+40);
 	gravity = createVector(0,0.1);
+
+	textSize(12);
 
 	forces = new Forces();
 
@@ -76,8 +83,15 @@ function draw() {
 	}
 
 	
-	document.getElementById('Energy').textContent = kineticSum;
+	document.getElementById('Energy').textContent = "Kinetic Energy: " + kineticSum;
 	kineticSum = 0;
+
+	text("1", 10,height+40);
+	text("2", 150,height+40);
+	text("3", 10,height+70);
+	text("4", 150,height+70);
+	text("5", 10,height+100);
+
   
 }
 
